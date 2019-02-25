@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<title>CALCULATOR TEST PAGE</title>
+<script id="sap-ui-bootstrap"
+	src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_bluecrystal" 
+	data-sap-ui-libs="sap.m"
+	data-sap-ui-resourceroots='{
+			"com.sap.calc": "./"
+		}'
+	data-sap-ui-compatVersion="edge" 
+	data-sap-ui-async="true"
+	data-sap-ui-oninit="module:com/sap/calc/calculatorui/test/initMockServer">
+	
+</script>
+<script>
+sap.ui.require([
+           	"sap/ui/core/util/MockServer",
+           ], function (MockServer) {
+           	"use strict";
+
+           	return {
+           		init: function () {
+           			// create
+           			var onCalculate = {
+           					method: "POST", 
+           					path: '/com.sap.calcacademy.calculator/expression',
+           					response: function(oXhr, sUrlParams) {
+           						oXhr.respondJSON(200, {"Location": "com.sap.calcacademy.calculator/result"}, JSON.stringify(
+           								{
+           									"expression": "(19.1-5.2*(20-0.1)-1)/2",
+           								    "resultID": 2
+           								}
+           						));
+           						return true;
+           					}
+           			}
+           			
+           			var oMockServer = new sap.ui.core.util.MockServer({
+           				requests: [
+           				           onCalculate
+           				           ]
+           			});
+           			// start
+           			oMockServer.start();
+           			
+           			new sap.ui.core.ComponentContainer({
+						name : "com.sap.calc.calculatorui"
+					}).placeAt("content");
+           	}
+           	};
+           });
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<mvc:View id="list-view" height="100%"
+	controllerName="com.sap.calc.calculatorui.controller.ListSearch"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page showHeader="false">
+		<content>
+				<Toolbar>
+					<SearchField liveChange="onSearch" width="100%" />
+				</Toolbar>
+			 <Table id="table" headerText="History" growing="true"
+				growingThreshold="10" noDataText="No history available"
+				enableBusyIndicator="true" items="{History>/}">
+				<columns>
+					<Column>
+						<Label text="Expression" />
+					</Column>
+					<Column>
+						<Label text="Result" />
+					</Column>
+				</columns> 
+				<items>
+					<ColumnListItem id="defaultItem">
+						<cells>
+							<Text text="{History>expression}" />
+							<Text text="{History>answer}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>  
+		</content>
+	</Page>
+</mvc:View>

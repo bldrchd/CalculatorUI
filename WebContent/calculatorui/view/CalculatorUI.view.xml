@@ -1,0 +1,22 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="com.sap.calc.calculatorui.controller.CalcController"
+	displayBlock="true">
+	<Shell>
+		<App>
+			<Page title="CalcAcademy Calculator">
+				<Panel headerText="Calculator" class="sapUiResponsiveMargin"
+					width="auto">
+					<content>
+						<Input id="expressioninput" value="{/Enter expression}"
+							valueLiveUpdate="true" width="60%" />
+						<Button id="input-submit" text="Calculate" press=".onCalculate" />
+
+						<Label id="result" text="RESULT: {CalculatorUIPanel>/result}" ></Label>
+
+						<mvc:XMLView viewName="com.sap.calc.calculatorui.view.HistoryList" />
+					</content>
+				</Panel>
+			</Page>
+		</App>
+	</Shell>
+</mvc:View>

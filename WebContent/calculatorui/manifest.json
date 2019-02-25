@@ -1,0 +1,74 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+	"id": "com.sap.calc.calculatorui",
+	"type": "application",
+	"i18n": "i18n/i18n.properties",
+	"title": "{{appTitle}}",
+	"description": "{{appDescription}}",
+	"applicationVersion": {
+	  "version": "1.0.0"
+	},
+	"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"dataSources": {
+			"default": {
+				"uri": "https://services.odata.org/TripPinRESTierService/(S(id))/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+  },
+  "sap.ui": {
+	"technology": "UI5",
+	"deviceTypes": {
+		"desktop": true,
+		"tablet": true,
+		"phone": true
+	}
+  },
+  "sap.ui5": {
+	"rootView": {
+		"viewName": "calculatorui.view.CalculatorUI",
+		"type": "XML",
+		"async": true,
+		"id": "calculatorUI"
+	},
+	"dependencies": {
+	  "minUI5Version": "1.60",
+	  "libs": {
+		"sap.m": {},
+		"sap.ui.core": {},
+		"sap.ui.layout": {}
+	  }
+	},
+	"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+	"models": {
+	  "calc": {
+		"type": "sap.ui.model.resource.ResourceModel",
+		"settings": {
+		  "bundleName": "calculatorui.calc"
+		}
+	  }
+	},
+	"history" : {
+		"type:"sap.ui.model.json.JSONModel",
+		"uri":"History.json"
+	},
+	"": {
+				"dataSource": "default",
+				"settings": {
+					"autoExpandSelect": true,
+					"operationMode": "Server",
+					"groupId": "$direct",
+					"synchronizationMode": "None"
+				}
+			}
+}
+  }
+}

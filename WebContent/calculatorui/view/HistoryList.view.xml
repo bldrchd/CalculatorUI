@@ -1,0 +1,17 @@
+<mvc:View controllerName="com.sap.calc.calculatorui.controller.HistoryList"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<Panel headerText="History" class="sapUiResponsiveMargin" width="auto">
+		<content>
+			<!--  mvc:XMLView id="list-view" viewName="com.sap.calc.calculatorui.view.List" />  -->
+			<Button id="getHistory" text="Get History" press=".onGetHistory" />
+			<Label id="hist" text="History: {HistoryPanel>/history}" ></Label>
+			<!--<List headerText="HistoryListHeader" class="sapUiResponsiveMargin"
+				width="auto" items="{History>/History}">
+				
+				<items>
+					<ObjectListItem title="{History>id} = {History>answer}" />
+				</items>
+			</List> -->
+		</content>
+	</Panel>
+</mvc:View>
